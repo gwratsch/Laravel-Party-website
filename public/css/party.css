@@ -1,0 +1,8 @@
+button{
+    width: 150px;
+    margin: 5px 0;
+}
+.submit.button.is-link{
+    float: left;
+    margin-right: 40px;
+}
