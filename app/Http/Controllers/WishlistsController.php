@@ -1,18 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Wishlist;
 use App\Party;
-use App\wishlist;
 
-class PartiesController extends Controller
+class WishlistsController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth')->except(['']);
-    }
+    } 
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +19,8 @@ class PartiesController extends Controller
      */
     public function index()
     {
-        $parties = Party::where('user_id', auth()->id())->get();
-        return view('party.index', compact('parties'));
+        $wishlists = Wishlist::where('user_id', auth()->id())->get();
+        return view('wishlist.index', compact('wishlists'));
     }
 
     /**
@@ -30,9 +29,11 @@ class PartiesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {  
+        $parties = Party::findOrFail(request('party_id'));
+
         if(auth::id() > 0 ){
-            return view('party.create');
+            return view('wishlist.create', compact('parties'));
         }else{
             return redirect('/');
         }
@@ -46,17 +47,8 @@ class PartiesController extends Controller
      */
     public function store()
     {
-        
         if(auth::id() > 0 ){
-            $attributes = request()->validate([
-                'partyinfo'=>['required'],
-                'location'=>['required']
-            ]);
-            $attributes['user_id']= auth()->id();
-            $newParty = Party::create($attributes);
-            $attributes['tickets'] = request()->tickets ? TRUE: FALSE;
-            $newParty->addPartyWishlist($attributes);
-            return redirect('/party');
+            return redirect('/Wishlist');
         }else{
             return redirect('/');
         }
@@ -68,12 +60,11 @@ class PartiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Party $party)
+    public function show(Wishlist $wishlist)
     {
-        
-        $parties = $party->findOrFail($party->id);
-        if($parties->user_id == auth::id()){
-            return view('party.show', compact('party'));
+        $wishlists = $wishlist->findOrFail($wishlist->id);
+        if($wishlists->user_id == auth::id()){
+            return view('wishlist.show', compact('wishlists'));
         }else{
             return redirect('/');
         }
@@ -85,12 +76,11 @@ class PartiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Party $party)
+    public function edit(Wishlist $wishlist)
     {
-        $parties = $party->findOrFail($party->id);
-        if($parties->user_id == auth::id()){
-            $parties->partyWishlist;
-            return view('party.edit', compact('parties'));
+        $$wishlists = $wishlist->findOrFail($wishlist->id);
+        if($wishlists->user_id == auth::id()){
+            return view('wishlist.edit', compact('wishlists'));
         }else{
             return redirect('/');
         }
@@ -103,13 +93,10 @@ class PartiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Party $party)
+    public function update(Wishlist $wishlists)
     {
-        
-        if($party->user_id == auth::id()){
-            $party->update(request(['partyinfo','location']));
-            $party->UpdatePartyWishlist(request());
-            return redirect('/party');
+        if($wishlists->user_id == auth::id()){
+            return redirect('/wishlist');
         }else{
             return redirect('/');
         }
@@ -121,11 +108,11 @@ class PartiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Party $party)
+    public function destroy(Wishlist $wishlists)
     {
-        if($party->user_id == auth::id()){
-            $party->delete();
-            return redirect('/party');  
+        if($wishlists->user_id == auth::id()){
+            $wishlists->delete();
+            return redirect('/wishlist');  
         }else{
             return redirect('/');
         }

@@ -6,3 +6,10 @@ button{
     float: left;
     margin-right: 40px;
 }
+body{
+    display: inline-blockblock;
+}
+body section.container{
+    background-color: whitesmoke;
+    padding:10px;
+}

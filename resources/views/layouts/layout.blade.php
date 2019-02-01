@@ -9,21 +9,15 @@
         <script src="/js/app.js" defer=""></script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+        <!-- CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
         <link rel="stylesheet" href="/css/app.css">        
         <link rel="stylesheet" href="/css/party.css">
         <link rel="icon" href="/images/favicon.png" sizes="32x32">
         <style>body{ background: url('/images/image2.jpg') no-repeat; background-size: cover}</style>
     </head>
-    <body class= @yield('classPageName')>
-        <header>
-             <div class="content">
-                <div class="title m-b-md">
-                    <h1>@yield('title')</h1>
-                </div>
-            </div>       
-        @yield('header') 
-        </header>
+<body id="body" class= @yield('classPageName') style="">
+        @include('layouts.header')
         <div class="navbar navbar-expand-md navbar-light navbar-laravel">
             @include('layouts.nav')
 
@@ -84,7 +78,7 @@
         </section>
         
         @include('layouts.footer')
-        
+     <script src="/js/party.js" ></script>   
     </body>
 </html>
 

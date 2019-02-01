@@ -19,4 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/party','PartiesController');
+
+Route::resource('/party','PartiesController')->middleware('auth');
+Route::resource('/wishlist','WishlistsController');
+Route::post('/wishlist/create','WishlistsController@create');

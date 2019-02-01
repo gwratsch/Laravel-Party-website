@@ -27,6 +27,15 @@ Create a Party
                     <textarea class="textarea" name='location' >{{old('location')}}</textarea>  
                 </div>
             </div>  
+            <div class="field">
+                <label ref='location' >tickets</label>
+                <div class="control">
+                    <select name="tickets">
+                        <option value=TRUE selected>Only you Create a wishlist</option>
+                        <option value=FALSE >all participants Create a wishlist</option>
+                    </select>
+                </div>
+            </div>  
             <div class="field">  
                 <div class="control">
                     <input type="submit" name="submit">

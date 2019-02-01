@@ -1,0 +1,55 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class party{
+    {field} id
+    {field} partyname
+    {field} user_id
+    {field} partyAddress
+    {field} partyTown
+    {field} partyCountry
+}
+class users{
+    {field} id
+    {field} name
+    {field} email
+}
+class wishlists{
+    {field} id
+    {field} party_id
+    {field} user_id
+    {field} tickets : boolean
+
+}
+class articles{
+    {field} id
+    {field} party_id
+    {field} articlename
+    {field} 
+}
+class articleList{
+    {field} id
+    {field} user_id
+    {field} articles_id
+}
+class mail
+class participants{
+    {field} id
+    {field} party_id
+    {field} user_id
+    {field} participate :boolean
+    {field} sendInvitation :date
+    sendMail()
+    
+}
+
+users "1"--"*" party
+party "1"--"0.." wishlists
+users "1"--"1" wishlists
+party "1"--"0..*" participants
+users "1"--"1" participants
+wishlists "1"--"*" articles
+users "1"--"*" articleList
+articles "1"--"*" articleList
+
+@enduml

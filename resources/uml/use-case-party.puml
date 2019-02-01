@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor bezoeker
+actor user
+actor deelnemer
+
+rectangle system{
+
+    bezoeker - (user registratie)
+    bezoeker - (home)
+    user - (home)
+    user - (user registratie)   
+    user - (party)
+    (party) -|> (user registratie)
+    (database) <|. (party)
+   (user registratie) -|> (mail)
+    (mail) - deelnemer
+    (party) - (wishlist)
+    (party) - (deelnemers)
+    (wishlist) - (articles)
+    (articles) - (articleList)
+}
+
+
+@enduml

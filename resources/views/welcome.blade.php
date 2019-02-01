@@ -5,30 +5,11 @@
 @section('header')
 @endsection
 
-@section('title')
-Welkom on the Party Page
-@endsection
+@section('title','Party ....')
 
 @section('section')
-    <h3>Aangemaakte party.</h3>
-    <table class="table">
-        <thead>
-            <tr >
-                <th>User id</th>
-                <th>Name</th>
-                <th>Email</th>
-            </tr>
-
-        </thead>
-        
-        @foreach($users as $user)
-            <tr >
-                <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-            </tr>    
-        @endforeach
-        
-    </table>
-
+<h2>It is Party time</h2>
+<p>Make yourself and all your frends happy and organise a PARTY.</p>
+<p>Let me help you and tel me about your party and who do you invite.</p>
+<p>Register and create a Party.</p>
 @endsection

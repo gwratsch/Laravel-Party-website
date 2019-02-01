@@ -30,7 +30,7 @@ Party INDEX Page
                 <td >{{$party->user_id}}</td>
                 <td >{{$party->partyinfo}}</td>
                 <td >{{$party->location}}</td>
-                <td ><a href="/party/{{$party->id}}" >edit</a></td>
+                <td ><a href="/party/{{$party->id}}/edit" >edit</a></td>
             </tr>
             @endforeach
         @endif
