@@ -65,6 +65,7 @@ Party edit Page
          </div>
     </form>
     @if($parties->participant->count())
+    <h2>Overzicht uitgenodigde gasten</h2>
     <table class="box table">
         <thead>
             <tr class="tablerow">
