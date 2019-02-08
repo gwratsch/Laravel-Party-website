@@ -24,7 +24,7 @@ class Party extends Model
         $wishlist->update($attributes);
     }
     public function participant(){
-        return $this->hasMany('App\participant')
+        return $this->hasMany('App\Participant')
                 ->join('users','users.id','=','user_id')
                 ->select('email','participants.id as rowid','participants.user_id','participants.party_id');
     }
