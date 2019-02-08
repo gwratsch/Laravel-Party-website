@@ -68,9 +68,6 @@ Party edit Page
     <table class="box table">
         <thead>
             <tr class="tablerow">
-                <th>id</th>
-                <th>party id</th>
-                <th>User id</th>
                 <th>Email</th>
                 <th></th>
             </tr>
@@ -79,9 +76,6 @@ Party edit Page
             
             @foreach($parties->participant as $participant)
             <tr class="tablerow">
-                <td>{{$participant->rowid}}</td>
-                <td>{{$participant->party_id}}</td>
-                <td>{{$participant->user_id}}</td>
                 <td>{{$participant->email}}</td>
                 <td><a href="/participant/{{$participant->rowid}}/delete" >Delete</a></td>
             </tr>

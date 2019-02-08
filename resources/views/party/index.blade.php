@@ -15,8 +15,6 @@ Party INDEX Page
     <table class="table">
         <thead>
             <tr >
-                <th>Party id</th>
-                <th>User</th>
                 <th>Party info</th>
                 <th>Location</th>
                 <th></th>
@@ -26,8 +24,6 @@ Party INDEX Page
         @if($parties)
             @foreach($parties as $party)
             <tr >
-                <td >{{$party->id}}</td>
-                <td >{{$party->user_id}}</td>
                 <td >{{$party->partyinfo}}</td>
                 <td >{{$party->location}}</td>
                 <td ><a href="/party/{{$party->id}}/edit" >edit</a></td>
