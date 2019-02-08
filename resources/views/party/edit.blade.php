@@ -49,5 +49,45 @@ Party edit Page
             <button class="submit button" type="submit">Delete</button>
         </form>
     </div>
+    <form method="post" action="/participant/create">
+         @csrf
+         <input type="hidden" name="party_id" value={{$parties->id}}>
+         <div class="field ">
+            <label ref="email">E-mail deelnemer</label>
+            <div class="control">
+               <input type="email" name="email">
+            </div>
+         </div>
+         <div class="field ">
+             <div class="control">
+                <button class="submit button" type="submit">Opslaan</button>
+            </div>
+         </div>
+    </form>
+    @if($parties->participant->count())
+    <table class="box table">
+        <thead>
+            <tr class="tablerow">
+                <th>id</th>
+                <th>party id</th>
+                <th>User id</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            @foreach($parties->participant as $participant)
+            <tr class="tablerow">
+                <td>{{$participant->rowid}}</td>
+                <td>{{$participant->party_id}}</td>
+                <td>{{$participant->user_id}}</td>
+                <td>{{$participant->email}}</td>
+                <td><a href="/participant/{{$participant->rowid}}/delete" >Delete</a></td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @endif
 </div>
 @endsection

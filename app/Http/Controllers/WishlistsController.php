@@ -78,7 +78,7 @@ class WishlistsController extends Controller
      */
     public function edit(Wishlist $wishlist)
     {
-        $$wishlists = $wishlist->findOrFail($wishlist->id);
+        $wishlists = $wishlist->findOrFail($wishlist->id);
         if($wishlists->user_id == auth::id()){
             return view('wishlist.edit', compact('wishlists'));
         }else{

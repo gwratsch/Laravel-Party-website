@@ -25,7 +25,6 @@ class articles{
     {field} id
     {field} party_id
     {field} articlename
-    {field} 
 }
 class articleList{
     {field} id
@@ -40,7 +39,6 @@ class participants{
     {field} participate :boolean
     {field} sendInvitation :date
     sendMail()
-    
 }
 
 users "1"--"*" party

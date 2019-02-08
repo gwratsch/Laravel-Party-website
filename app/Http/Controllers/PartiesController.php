@@ -90,6 +90,7 @@ class PartiesController extends Controller
         $parties = $party->findOrFail($party->id);
         if($parties->user_id == auth::id()){
             $parties->partyWishlist;
+            $parties->participant;
             return view('party.edit', compact('parties'));
         }else{
             return redirect('/');

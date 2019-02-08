@@ -23,4 +23,17 @@ class Party extends Model
         $attributes['tickets']= $request['tickets'];
         $wishlist->update($attributes);
     }
+    public function participant(){
+        return $this->hasMany('App\participant')
+                ->join('users','users.id','=','user_id')
+                ->select('email','participants.id as rowid','participants.user_id','participants.party_id');
+    }
+    public function addparticipants($participant){
+       $attributes['party_id']  = $this->party_id;
+       $attributes['user_id']  = $this->user_id;
+       $attributes['participate']  = $participant['participate'];
+       $attributes['sendInvitation']  = $participant['sendInvitation'];
+       Participant::create($attributes);
+    }
+
 }
