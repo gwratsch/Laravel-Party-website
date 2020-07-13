@@ -1,0 +1,14 @@
+{
+    "name": "P2p",
+    "alias": "p2p",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\P2p\\Providers\\P2pServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
