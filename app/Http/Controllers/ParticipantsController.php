@@ -29,7 +29,7 @@ class ParticipantsController extends Controller
      */
     public function create(Request $request)
     {
-        
+
        if(auth::id() > 0 ){
 
             $parties = Party::findOrFail($request->party_id);
@@ -78,7 +78,7 @@ class ParticipantsController extends Controller
     {
         $participants = $participant->findOrFail($participant->id);
         if($participants->user_id == auth::id()){
-            return view('participant.show', compact('$participants'));
+            return view('participant.show', compact('participants'));
         }else{
             return redirect('/');
         }
@@ -120,10 +120,10 @@ class ParticipantsController extends Controller
      */
     public function destroy(Participant $participant)
     {
-        $parties = Party::findOrFail($participant->party_id);    
+        $parties = Party::findOrFail($participant->party_id);
         if($parties->user_id == auth::id()){
             $participant->delete();
-            return redirect('/party/'.$participant->party_id.'/edit');  
+            return redirect('/party/'.$participant->party_id.'/edit');
         }else{
             return redirect('/');
         }
